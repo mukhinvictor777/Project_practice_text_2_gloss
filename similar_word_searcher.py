@@ -108,3 +108,4 @@ class SimilarWordSearcher:
         """
         with open(result_filename, 'w', encoding='utf-8') as json_file:
             dump(result_dict, json_file, ensure_ascii=False, indent=2)
+        print(f"Done! Result is saved into {result_filename}")
