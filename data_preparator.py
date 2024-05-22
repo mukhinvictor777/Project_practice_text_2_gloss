@@ -2,8 +2,11 @@ import pandas as pd
 import numpy as np
 from json import dump
 import re
+
+from pandas import Series, DataFrame
+
 from word_analyzer import WordAnalyzer
-from typing import Union
+from typing import Union, Tuple, Any
 
 
 def clean_text(text: str) -> str:
@@ -264,7 +267,9 @@ class DataPreparator:
 
         # не все составные слова состоят из 3 слов
         # поэтому заполняем пропуски вектором из ста нулей для третьего слова
-        df_comp["composite_3_vec"] = df_comp["composite_3_vec"].apply(lambda x: [0.0] * 100 if x == "" else x)
+        df_comp["composite_3_vec"] = df_comp["composite_3_vec"].apply(lambda x:
+                                                                      [0.0] * 100 if isinstance(x, str) and x == ""
+                                                                      else x)
 
         # Добавление новой колонки с суммой векторов
         df_comp['vec'] = df_comp.apply(lambda row:
@@ -307,7 +312,7 @@ class DataPreparator:
         res = pd.concat([df1, df2, df3], ignore_index=True)
         return res
 
-    def __get_all_vec(self, df: pd.DataFrame) -> Union[pd.DataFrame, list]:
+    def __get_all_vec(self, df: pd.DataFrame) -> tuple[Any, Any]:
         """
         Функция для сбора векторов всех типов слов в один датафрейм
 
