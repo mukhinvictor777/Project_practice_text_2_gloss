@@ -43,4 +43,11 @@ class ModelLoader:
         model_path = f"models/{self.model_id}/model.bin"
         model = gensim.models.KeyedVectors.load_word2vec_format(model_path, binary=True)
         print("Model has been loaded")
+
+        # Удаление лишнего zip архива
+        zip_file_path = f'{self.model_id}.zip'
+        if os.path.exists(zip_file_path):
+            os.remove(zip_file_path)
+            print(f"Removed zip file: {zip_file_path}")
+
         return model
