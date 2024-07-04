@@ -5,11 +5,13 @@ import warnings
 
 warnings.filterwarnings("ignore")
 
+
 if __name__ == '__main__':
 
-    # если модель не скачана, то загрузка будет около 15 мин ~2.5 ГБ
+    # если модель не скачана, то загрузка будет около 15-30 мин ~2.5 ГБ
     # можно скачать заранее с http://vectors.nlpl.eu/repository/#
     # распаковать в ./models/65
+
     model = ModelLoader(model_id="65").load_model()
 
     # подготовка словаря глоссов

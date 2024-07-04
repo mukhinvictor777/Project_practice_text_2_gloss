@@ -38,6 +38,7 @@ class ModelLoader:
         Функция загружает модель.
         Работает только с word2vec моделями в формате model.bin
         """
+
         self.__download_model_rusvectores()
 
         model_path = f"models/{self.model_id}/model.bin"

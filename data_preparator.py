@@ -2,9 +2,7 @@ import pandas as pd
 import numpy as np
 from json import dump
 import re
-
 from pandas import Series, DataFrame
-
 from word_analyzer import WordAnalyzer
 from typing import Union, Tuple, Any
 
@@ -12,12 +10,10 @@ from typing import Union, Tuple, Any
 def clean_text(text: str) -> str:
     """
     Функция оставляет только буквы, цифры, пробелы и слэш с помощью регулярного выражения
-
     Parameters
     ----------
     text: str
         текст для обработки
-
     Returns
     -------
     str
@@ -31,12 +27,10 @@ def clean_text(text: str) -> str:
 def set_type(row) -> str:
     """
     Функция определяет к какому типу относится слово - single, composite или synonym
-
     Parameters
     ----------
     row:
         строка датафрейма
-
     Returns
     -------
     str
@@ -53,14 +47,12 @@ def set_type(row) -> str:
 def search_homonyms(similar_words: dict, word: str) -> str:
     """
     Функция для нахождения однокоренных слов
-
     Parameters
     ----------
     similar_words: dict
         словарь с наиболее близкими по косинусному расстоянию словами
     word: str
         слово, которому ищем ближайшее
-
     Returns
     -------
     str
@@ -92,7 +84,6 @@ class DataPreparator:
                  ):
         """
         Функция инициализации класса
-
         Parameters
         ----------
         model:
@@ -113,7 +104,6 @@ class DataPreparator:
     def __load_data(self) -> pd.DataFrame:
         """
         Функция для загрузки данных в формате .txt
-
         Returns
         -------
         pd.DataFrame
@@ -133,7 +123,6 @@ class DataPreparator:
         ----------
         df: pd.DataFrame
             датафрейм со словами, которые надо обработать
-
         Returns
         -------
         pd.DataFrame
@@ -168,7 +157,6 @@ class DataPreparator:
     def __search_similar_word_in_model(self, word: str) -> str:
         """
         Функция для поиска наиболее похожих по вектору слов в модели
-
         Parameters
         ----------
         word: str
@@ -216,7 +204,6 @@ class DataPreparator:
         """
         Функция добавляет дополнительные столбцы для составных слов и синонимов,
         чтобы в дальнейшем получить для каждого отдельного слова векторное представление
-
         Parameters
         ----------
         df: pd.DataFrame
@@ -255,7 +242,6 @@ class DataPreparator:
         ----------
         df: pd.DataFrame
             датафрейм со словами
-
         Returns
         -------
         pd.DataFrame
@@ -384,6 +370,7 @@ class DataPreparator:
 
         # запись ненайденных слов в атрибут класса
         self.not_found_words = lst_na
-
         self.__dataframe_to_json(df_vec)
+
+
 

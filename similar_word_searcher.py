@@ -13,7 +13,6 @@ class SimilarWordSearcher:
     def __init__(self, gloss_filename: str, test_filename: str) -> None:
         """
         Функция инициализации класса
-
         Parameters
         ----------
         gloss_filename: str
@@ -56,7 +55,7 @@ class SimilarWordSearcher:
             список слов, которые не нашлись в модели
         trash_hold: float
             порог, для отбора слов по косинусному расстоянию
-            остаются слова со значением > trash_hold
+            остаются слова со значением больше trash_hold
 
         Returns
         -------
